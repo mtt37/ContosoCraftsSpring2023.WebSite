@@ -23,7 +23,7 @@ namespace ContosoCrafts.WebSite.Services
             get { return Path.Combine(WebHostEnvironment.WebRootPath, "data", "products.json"); }
         }
 
-        public IEnumerable<ProductModel> GetAllData()
+        public IEnumerable<ProductModel> GetProducts()
         {
             using(var jsonFileReader = File.OpenText(JsonFileName))
             {
@@ -37,7 +37,7 @@ namespace ContosoCrafts.WebSite.Services
 
         public void AddRating(string productId, int rating)
         {
-            var products = GetAllData();
+            var products = GetProducts();
 
             if(products.First(x => x.Id == productId).Ratings == null)
             {
