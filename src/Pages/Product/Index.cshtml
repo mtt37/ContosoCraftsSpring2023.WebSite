@@ -1,0 +1,10 @@
+﻿@page
+@using ContosoCrafts.WebSite.Components
+@model ContosoCrafts.WebSite.Pages.Product.IndexModel
+@{
+    ViewData["Title"] = "Index page";
+}
+
+@(await Html.RenderComponentAsync<ProductIndex>(RenderMode.ServerPrerendered))
+
+<script src="_framework/blazor.service.js"></script>
