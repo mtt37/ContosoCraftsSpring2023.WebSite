@@ -50,7 +50,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// </summary>
         /// <returns></returns>
 
-        public IActionResult OnPostAsync()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
