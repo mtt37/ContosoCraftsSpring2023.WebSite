@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ContosoCrafts.WebSite.Pages.Product
 {
+    /// <summary>
+    /// Manage the Update of the data for a single record
+    /// </summary>
+
     public class UpdateModel : PageModel
     {
         // Data middletier
