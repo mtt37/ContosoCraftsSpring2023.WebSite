@@ -37,6 +37,14 @@ namespace ContosoCrafts.WebSite.Pages.Product
             Product = ProductService.GetAllData().FirstOrDefault(m => m.Id.Equals(id));
         }
 
+        /// <summary>
+        /// Post the model back to the page
+        /// The model is in the class variable Product
+        /// Call the data layer to Update that data
+        /// Then return to the index page
+        /// </summary>
+        /// <returns></returns>
+
         public IActionResult OnPostAsync()
         {
             if (!ModelState.IsValid)
