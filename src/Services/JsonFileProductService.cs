@@ -35,7 +35,6 @@ namespace ContosoCrafts.WebSite.Services
             }
         }
 
-
         /// <summary>
         /// Add Rating
         /// 
@@ -75,7 +74,7 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             // Check to see if the rating exist, if there are none, then create the array
-            if (data.Ratings == null)
+            if(data.Ratings == null)
             {
                 data.Ratings = new int[] { };
             }
@@ -91,7 +90,6 @@ namespace ContosoCrafts.WebSite.Services
             return true;
         }
 
- 
         /// <summary>
         /// Find the data record
         /// Update the fields
@@ -106,12 +104,17 @@ namespace ContosoCrafts.WebSite.Services
             {
                 return null;
             }
+
             // Update the data to the new passed in values
             productData.Title = data.Title;
             productData.Description = data.Description.Trim();
             productData.Url = data.Url;
             productData.Image = data.Image;
+
             productData.Quantity = data.Quantity;
+            productData.Price = data.Price;
+
+            productData.CommentList = data.CommentList;
 
             SaveData(products);
 
@@ -137,7 +140,6 @@ namespace ContosoCrafts.WebSite.Services
             }
         }
 
-
         /// <summary>
         /// Create a new product using default values
         /// After create the user can update to set values
@@ -154,7 +156,7 @@ namespace ContosoCrafts.WebSite.Services
                 Image = "",
             };
 
-            // Get the current set, and append the new record to it
+            // Get the current set, and append the new record to it becuase IEnumerable does not have Add
             var dataSet = GetAllData();
             dataSet = dataSet.Append(data);
 
@@ -162,7 +164,6 @@ namespace ContosoCrafts.WebSite.Services
 
             return data;
         }
-
 
         /// <summary>
         /// Remove the item from the system
@@ -175,11 +176,11 @@ namespace ContosoCrafts.WebSite.Services
             var data = dataSet.FirstOrDefault(m => m.Id.Equals(id));
 
             var newDataSet = GetAllData().Where(m => m.Id.Equals(id) == false);
-
+            
             SaveData(newDataSet);
 
             return data;
         }
-
+        
     }
 }
