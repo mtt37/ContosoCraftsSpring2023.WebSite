@@ -7,6 +7,9 @@ using ContosoCrafts.WebSite.Services;
 
 namespace ContosoCrafts.WebSite.Pages.Product
 {
+    /// <summary>
+    /// Create Page
+    /// </summary>
     public class CreateModel : PageModel
     {
         // Data middle tier
@@ -31,8 +34,9 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// <param name="id"></param>
         public IActionResult OnGet()
         {
-            Product = ProductService.CreateData();
+            Product  = ProductService.CreateData();
 
+            // Redirect the webpage to the Update page populated with the data so the user can fill in the fields
             return RedirectToPage("./Update", new { Id = Product.Id });
         }
     }
