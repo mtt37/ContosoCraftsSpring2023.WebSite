@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 using ContosoCrafts.WebSite.Models;
@@ -9,7 +8,7 @@ using ContosoCrafts.WebSite.Services;
 namespace ContosoCrafts.WebSite.Pages.Product
 {
     /// <summary>
-    /// Index Page will return all the data to show the user
+    /// Index Page will return all the data to show
     /// </summary>
     public class IndexModel : PageModel
     {
@@ -24,13 +23,12 @@ namespace ContosoCrafts.WebSite.Pages.Product
 
         // Data Service
         public JsonFileProductService ProductService { get; }
-
+        
         // Collection of the Data
         public IEnumerable<ProductModel> Products { get; private set; }
 
         /// <summary>
-        /// REST OnGet
-        /// Return all the data
+        /// REST OnGet, return all data
         /// </summary>
         public void OnGet()
         {
