@@ -6,13 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using ContosoCrafts.WebSite.Models;
 using ContosoCrafts.WebSite.Services;
 
-
 namespace ContosoCrafts.WebSite.Pages.Product
 {
     /// <summary>
     /// Manage the Update of the data for a single record
     /// </summary>
-
     public class UpdateModel : PageModel
     {
         // Data middletier
@@ -39,7 +37,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// <param name="id"></param>
         public void OnGet(string id)
         {
-            Product = ProductService.GetAllData().FirstOrDefault(m => m.Id.Equals(id));
+            Product  = ProductService.GetAllData().FirstOrDefault(m => m.Id.Equals(id));
         }
 
         /// <summary>
@@ -49,7 +47,6 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// Then return to the index page
         /// </summary>
         /// <returns></returns>
-
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
