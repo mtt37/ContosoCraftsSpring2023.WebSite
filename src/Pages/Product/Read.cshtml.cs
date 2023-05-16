@@ -1,8 +1,10 @@
+using System.Linq;
+
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc;
+
 using ContosoCrafts.WebSite.Models;
 using ContosoCrafts.WebSite.Services;
-using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ContosoCrafts.WebSite.Pages.Product
 {
@@ -10,14 +12,33 @@ namespace ContosoCrafts.WebSite.Pages.Product
     {
         // Data middletier
         public JsonFileProductService ProductService { get; }
+
+        /// <summary>
+        /// Defualt Construtor
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="productService"></param>
         public ReadModel(JsonFileProductService productService)
         {
             ProductService = productService;
         }
+
+        // The data to show
         public ProductModel Product;
-        public void OnGet(string id)
+
+        /// <summary>
+        /// REST Get request
+        /// </summary>
+        /// <param name="id"></param>
+        public IActionResult OnGet(string id)
         {
-            Product = ProductService.GetAllData().FirstOrDefault(m => m.Id.Equals(id));
+            Product  = ProductService.GetAllData().FirstOrDefault(m => m.Id.Equals(id));
+            if (Product == null)
+            {
+                return RedirectToPage("./Index");
+            }
+
+            return Page();
         }
     }
 }
